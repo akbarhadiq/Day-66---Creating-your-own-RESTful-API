@@ -1,0 +1,38 @@
+REpresentational
+State
+Transfer
+
+REST API
+
+classing architecture
+
+Client = the one makes the request
+Server = check if the request is available to do, if it did not, the server will give you error code (404)
+
+Client ---> Server
+
+Client make a request to the server done through http request.
+theres many protocol for request, such as ftp or (file transfer protocol)
+if you want to make your http request more secure. use the secure version which is https --> http-secure
+if the server see the client request as valid, then the server will serve the client with requested things.
+in order to give us those request the server might done some things, such as run some code or computation, or the server communicate with 
+the database to grab relevant pieces of data.
+
+so when you create some API basically you create a standarized way for server and client to communicate and pass data through eachother
+now REST is an architectural style for building API. there are many styles to build an API before. like SOAP, GraphQL, Falcor etc. 
+but the gold standard for web API is REST. it was a brainchild of Roy Fielding, born out of his PhD Thesis Dissertation. basically REST API is 
+a bunch of rules on how to transfer data for web API
+
+HTTP verbs:
+GET
+POST
+PUT
+PATCH
+DELETE
+
+5 things to make your API Restful
+
+different things with put vs patch :
+put --> updating a database by replacing the entire database from before
+
+patch --> only replacing a data that needs to be replaced, instead of a whole data object
