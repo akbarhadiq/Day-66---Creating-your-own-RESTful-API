@@ -9,6 +9,7 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///cafes.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
+API_KEY = "covfefe"
 
 
 ##Cafe TABLE Configuration
@@ -159,6 +160,20 @@ def update_price(id):
     
 
 ## HTTP DELETE - Delete Record
+@app.route("/delete/<int:id>", methods=["DELETE"])
+def delete(id):
+    secret_key = request.args.get("secret_key")
+    if secret_key == API_KEY:
+        cafe_to_delete = db.session.query(Cafe).get(id)
+        db.session.delete(cafe_to_delete)
+        db.session.commit()
+        return jsonify({
+            "Successfull" : "Cafe Deleted"
+        })
+    else :
+        return jsonify({
+            "API Key Error" : "You did not have the correct API Key"
+        })
 
 
 if __name__ == '__main__':
